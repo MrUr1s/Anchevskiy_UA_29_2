@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerConditionComponent : ConditionComponent
 {
+    [SerializeField]
     private bool _immortal;
     [SerializeField]
     private float _immortalTime = 3f, _immortalSwitchVisual=0.25f;
@@ -33,7 +34,7 @@ public class PlayerConditionComponent : ConditionComponent
         while(time > 0)
         {
             _render.enabled=!_render.enabled;
-            time -= Time.deltaTime;
+            time -= _immortalSwitchVisual;
             yield return new WaitForSeconds(_immortalSwitchVisual);
         }
         _render.enabled = true;
